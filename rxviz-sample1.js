@@ -6,14 +6,14 @@ const subscriptionDelay = 500;
 
 function getFromCacheLazy() {
   return new Observable(s => {
-     s.next('cache');
+     s.next('c');
      s.complete();
   })
 }
 function executeRequest() {
   var request$ = new ReplaySubject(1);
   setTimeout(() => {
-    request$.next('response');
+    request$.next('r');
     request$.complete();
   }, responseDelay);
   return request$;
