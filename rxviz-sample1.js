@@ -1,14 +1,11 @@
-const { concat,timer, Observable, ReplaySubject } = Rx;
+const { concat, defer, timer, Observable, ReplaySubject } = Rx;
 const { take, switchMap } = RxOperators;
 
 const responseDelay = 1000;
 const subscriptionDelay = 500;
 
 function getFromCacheLazy() {
-  return new Observable(s => {
-     s.next('c');
-     s.complete();
-  })
+  return defer(() => 'c');
 }
 function executeRequest() {
   var request$ = new ReplaySubject(1);
